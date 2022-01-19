@@ -1,4 +1,4 @@
-### Topology Assignment POC
-## https://www.youtube.com/watch?v=0uLqdBpYAVA
-## http://localhost:8080/h2-console/
-##j dbc url: jdbc:h2:mem:topology
+# Topology Assignment POC
+### Based on this tutorial: https://www.youtube.com/watch?v=0uLqdBpYAVA
+### In-Memory database: http://localhost:8080/h2-console/
+### JDBC URL-> jdbc url: jdbc:h2:mem:topology
