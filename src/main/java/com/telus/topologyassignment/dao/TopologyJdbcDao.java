@@ -32,7 +32,7 @@ public class TopologyJdbcDao implements DAO {
 
 	@Override
 	public List<TopologyAssignment> getTopologyAssignment(List<String> getExternalIDs) {
-		// TODO Auto-generated method stub'
+
 		String inClauseParam = String.join(",", getExternalIDs);
 		String sql = "SELECT tn, mediaroom_id, node_name, node_slot from RDB_VIEW_XVU_MEDIAROOMS where "
 				+ "mediaroom_id in (" + inClauseParam + ")";

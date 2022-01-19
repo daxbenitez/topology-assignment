@@ -31,14 +31,18 @@ public class TopologyAssignmentApplication {
 		int chunkSize = 2;
 		AtomicInteger counter = new AtomicInteger();
         final Collection<List<String>> chunkedIds = 
-        		ids.stream().collect(Collectors.groupingBy(i -> counter.getAndIncrement() / chunkSize))
-                            .values();
+        		ids.stream()
+        		.collect(Collectors.groupingBy(i -> counter.getAndIncrement() / chunkSize))
+                .values();
         
-        //Query RDB_VIEW_XVU_MEDIAROOMS chunkSize at a time to prevent 1k IN CLAUSE limit in where condition
+        //Query RDB_VIEW_XVU_MEDIAROOMS chunkSize at a time to prevent 
+        //1k IN CLAUSE limit in where condition
 		System.out.println("\nQuerying RDB_VIEW_XVU_MEDIAROOMS " + chunkSize + " mediaroom_id at a time.");
-        chunkedIds.stream().map(dao::getTopologyAssignment)
-        .flatMap(Collection::stream)
-        .collect(Collectors.toList()).forEach(System.out::println);
+        chunkedIds.stream()
+		        .map(dao::getTopologyAssignment)
+		        .flatMap(Collection::stream)
+		        .collect(Collectors.toList())
+		        .forEach(System.out::println);
 	}
 
 }
